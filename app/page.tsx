@@ -1,65 +1,124 @@
-import Image from "next/image";
+import Link from "next/link";
+import { accessMethods, agents, product } from "@/lib/constants";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="min-h-screen bg-[#08090d] text-white">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
+        <Link href="/" className="flex items-center gap-3">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white text-sm font-bold text-black">
+            AD
+          </div>
+          <span className="font-semibold">{product.name}</span>
+        </Link>
+
+        <div className="flex items-center gap-3">
+          <Link
+            href="/login"
+            className="hidden text-sm text-slate-400 hover:text-white sm:block"
+          >
+            Login
+          </Link>
+          <Link
+            href="/dashboard"
+            className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition hover:bg-slate-200"
+          >
+            Get started
+          </Link>
+        </div>
+      </nav>
+
+      <section className="mx-auto max-w-6xl px-6 pb-20 pt-20">
+        <div className="max-w-3xl">
+          <div className="mb-6 inline-flex rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-sm text-slate-300">
+            CLI + Generated Files + MCP
+          </div>
+
+          <h1 className="text-5xl font-semibold tracking-tight text-white md:text-7xl">
+            {product.tagline}
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-400">
+            {product.description}
           </p>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/dashboard"
+              className="rounded-full bg-white px-5 py-3 text-center text-sm font-medium text-black transition hover:bg-slate-200"
+            >
+              Open workspace
+            </Link>
+            <Link
+              href="/integrations"
+              className="rounded-full border border-white/10 px-5 py-3 text-center text-sm font-medium text-white transition hover:bg-white/[0.05]"
+            >
+              View integrations
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="mt-16 grid gap-4 md:grid-cols-3">
+          {accessMethods.map((method) => (
+            <div
+              key={method.title}
+              className="rounded-2xl border border-white/10 bg-white/[0.03] p-5"
+            >
+              <h3 className="font-medium text-white">{method.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-slate-400">
+                {method.description}
+              </p>
+            </div>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="border-y border-white/10 bg-white/[0.02]">
+        <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-2">
+          <div>
+            <p className="text-sm font-medium text-slate-400">Problem</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight">
+              Every AI agent starts blank.
+            </h2>
+            <p className="mt-4 leading-7 text-slate-400">
+              Developers repeat the same project context, commands, bugs,
+              decisions, and rules every time they switch between AI tools.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-sm font-medium text-slate-400">Solution</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight">
+              Save the project brain once.
+            </h2>
+            <p className="mt-4 leading-7 text-slate-400">
+              AgentDock keeps project details, memory, skills, sessions, and
+              secret references in one workspace that agents can access.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="max-w-2xl">
+          <p className="text-sm font-medium text-slate-400">Supported agents</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight">
+            Connect through the method each agent supports.
+          </h2>
+        </div>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {agents.map((agent) => (
+            <div
+              key={agent.name}
+              className="rounded-2xl border border-white/10 bg-white/[0.03] p-5"
+            >
+              <h3 className="font-medium">{agent.name}</h3>
+              <p className="mt-2 text-sm text-slate-400">{agent.setup}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }
