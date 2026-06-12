@@ -1,4 +1,6 @@
 import { Sidebar } from "./Sidebar";
+import { logout } from "@/app/auth/actions";
+import { createClient } from "@/lib/supabase/server";
 
 type AppShellProps = {
   title: string;
@@ -6,29 +8,45 @@ type AppShellProps = {
   children: React.ReactNode;
 };
 
-export function AppShell({ title, description, children }: AppShellProps) {
+export async function AppShell({ title, description, children }: AppShellProps) {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
-    <div className="min-h-screen bg-[#08090d] text-white">
+    <div className="min-h-screen text-[#17130f]">
       <div className="flex">
         <Sidebar />
 
         <main className="min-h-screen flex-1">
-          <header className="border-b border-white/10 bg-[#08090d]/80 px-6 py-5 backdrop-blur">
+          <header className="sticky top-0 z-30 border-b border-[rgba(120,95,70,0.14)] bg-[#fffaf2]/78 px-4 py-4 backdrop-blur-xl sm:px-6">
             <div className="mx-auto flex max-w-6xl items-center justify-between">
               <div>
-                <h1 className="text-xl font-semibold tracking-tight">
+                <h1 className="text-xl font-semibold tracking-tight text-[#17130f]">
                   {title}
                 </h1>
-                <p className="mt-1 text-sm text-slate-400">{description}</p>
+                <p className="mt-1 text-sm text-[#756b5f]">{description}</p>
               </div>
 
-              <div className="hidden rounded-full border border-white/10 px-3 py-1 text-xs text-slate-400 sm:block">
-                MVP v1
+              <div className="hidden items-center gap-3 sm:flex">
+                <div className="premium-pill max-w-[260px] truncate rounded-full border px-3 py-1.5 text-xs">
+                  {user?.email || "No user"}
+                </div>
+
+                <form action={logout}>
+                  <button className="premium-button-secondary rounded-full border px-3 py-1.5 text-xs font-medium">
+                    Logout
+                  </button>
+                </form>
               </div>
             </div>
           </header>
 
-          <div className="mx-auto max-w-6xl px-6 py-8">{children}</div>
+          <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
+            {children}
+          </div>
         </main>
       </div>
     </div>

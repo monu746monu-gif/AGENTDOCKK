@@ -2,6 +2,9 @@
   "name": "agentdock",
   "version": "0.1.0",
   "private": true,
+  "bin": {
+  "agentdock": "./bin/agentdock.mjs"
+},
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -1,35 +1,69 @@
 import Link from "next/link";
+import Image from "next/image";
+import { signUp } from "@/app/auth/actions";
 
-export default function SignupPage() {
+type SignupPageProps = {
+  searchParams: Promise<{
+    error?: string;
+  }>;
+};
+
+export default async function SignupPage({ searchParams }: SignupPageProps) {
+  const params = await searchParams;
+
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#08090d] px-6 text-white">
-      <div className="w-full max-w-md rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-        <h1 className="text-2xl font-semibold">Create account</h1>
-        <p className="mt-2 text-sm text-slate-400">
-          Supabase auth will be added in the next step.
-        </p>
-
-        <div className="mt-6 space-y-3">
-          <input
-            placeholder="Email"
-            className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none placeholder:text-slate-600"
+    <main className="flex min-h-screen items-center justify-center px-4 py-10 text-white sm:px-6">
+      <div className="premium-card w-full max-w-md rounded-2xl border p-6">
+        <div className="mb-6 flex items-center gap-3">
+          <Image
+            src="/Claude%20Sonnet%204_5%20_%20MyShell.jpeg"
+            alt="AgentDock logo"
+            width={40}
+            height={40}
+            className="h-10 w-10 rounded-xl object-cover shadow-[0_12px_26px_rgba(92,69,42,0.14)]"
           />
-          <input
-            placeholder="Password"
-            type="password"
-            className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none placeholder:text-slate-600"
-          />
-          <Link
-            href="/dashboard"
-            className="block rounded-xl bg-white px-4 py-3 text-center text-sm font-medium text-black"
-          >
-            Create workspace
-          </Link>
+          <div>
+            <h1 className="text-2xl font-semibold tracking-tight">
+              Create account
+            </h1>
+            <p className="mt-1 text-sm text-[#756b5f]">
+              Create your AgentDock workspace.
+            </p>
+          </div>
         </div>
 
-        <p className="mt-5 text-sm text-slate-400">
+        {params.error ? (
+          <div className="mt-5 rounded-xl border border-red-500/20 bg-red-500/10 p-3 text-sm text-red-200">
+            {params.error}
+          </div>
+        ) : null}
+
+        <form action={signUp} className="mt-6 space-y-3">
+          <input
+            name="email"
+            placeholder="Email"
+            type="email"
+            required
+            className="w-full rounded-xl border px-4 py-3 text-sm outline-none placeholder:text-[#8a7e70]"
+          />
+          <input
+            name="password"
+            placeholder="Password"
+            type="password"
+            required
+            className="w-full rounded-xl border px-4 py-3 text-sm outline-none placeholder:text-[#8a7e70]"
+          />
+          <button
+            type="submit"
+            className="premium-button block w-full rounded-xl px-4 py-3 text-center text-sm font-medium"
+          >
+            Create workspace
+          </button>
+        </form>
+
+        <p className="mt-5 text-sm text-[#756b5f]">
           Already have an account?{" "}
-          <Link href="/login" className="text-white">
+          <Link href="/login" className="font-medium text-[#9a681d]">
             Login
           </Link>
         </p>

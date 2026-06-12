@@ -4,18 +4,24 @@ export const product = {
     description:
       "AgentDock helps developers connect Codex, Claude, Cursor, OpenClaw, Cline, and custom agents to the same project context through CLI, generated files, and MCP.",
   };
-  
-  export const navItems = [
-    { label: "Dashboard", href: "/dashboard" },
-    { label: "Projects", href: "/projects" },
-    { label: "Memory", href: "/memory" },
-    { label: "Skills", href: "/skills" },
-    { label: "Secrets", href: "/secrets" },
-    { label: "Agents", href: "/agents" },
-    { label: "Sessions", href: "/sessions" },
-    { label: "Integrations", href: "/integrations" },
+
+  export const generatedFiles = [
+    { label: "Generated Files", href: "/generated-files" },
+    { label: "Generated Files", href: "/generated-files" },
   ];
-  
+
+export const navItems = [
+        { label: "Dashboard", href: "/dashboard" },
+        { label: "Projects", href: "/projects" },
+        { label: "Memory", href: "/memory" },
+        { label: "Skills", href: "/skills" },
+        { label: "Secrets", href: "/secrets" },
+        { label: "Agents", href: "/agents" },
+        { label: "Sessions", href: "/sessions" },
+        { label: "Generated Files", href: "/generated-files" },
+        { label: "Integrations", href: "/integrations" },
+      ];
+
   export const accessMethods = [
     {
       title: "CLI Access",

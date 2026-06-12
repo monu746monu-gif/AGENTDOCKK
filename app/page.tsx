@@ -1,71 +1,226 @@
 import Link from "next/link";
+import Image from "next/image";
 import { accessMethods, agents, product } from "@/lib/constants";
+
+const workflow = [
+  "GitHub repo",
+  "Project brain",
+  "Memory + Skills",
+  "Generated files",
+  "Agents",
+];
+
+const howItWorks = [
+  {
+    title: "Import a repo",
+    description:
+      "Start from a GitHub repository and capture the details agents usually need before they can work well.",
+  },
+  {
+    title: "Build shared context",
+    description:
+      "Add memory, skills, secret references, agents, sessions, and project decisions in one calm workspace.",
+  },
+  {
+    title: "Generate setup files",
+    description:
+      "Create AGENTS.md, CLAUDE.md, Cursor rules, OPENCLAW.md, CLINE.md, and shared context from the same source.",
+  },
+];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#08090d] text-white">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white text-sm font-bold text-black">
-            AD
-          </div>
-          <span className="font-semibold">{product.name}</span>
-        </Link>
+    <main className="min-h-screen overflow-hidden text-[#17130f]">
+      <section className="relative min-h-[760px] overflow-hidden">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/backgorund.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,250,242,0.78)_0%,rgba(255,250,242,0.68)_46%,#f8f3ea_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-b from-transparent to-[#f8f3ea]" />
 
-        <div className="flex items-center gap-3">
-          <Link
-            href="/login"
-            className="hidden text-sm text-slate-400 hover:text-white sm:block"
-          >
-            Login
+        <nav className="relative z-10 mx-auto flex max-w-6xl items-center justify-between px-4 py-5 sm:px-6">
+          <Link href="/" className="group flex items-center gap-3 rounded-2xl">
+            <Image
+              src="/Claude%20Sonnet%204_5%20_%20MyShell.jpeg"
+              alt="AgentDock logo"
+              width={40}
+              height={40}
+              className="h-10 w-10 rounded-xl object-cover shadow-[0_14px_32px_rgba(23,19,15,0.16)] transition group-hover:-translate-y-0.5"
+            />
+            <span className="font-semibold text-[#17130f]">{product.name}</span>
           </Link>
-          <Link
-            href="/dashboard"
-            className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition hover:bg-slate-200"
-          >
-            Get started
-          </Link>
-        </div>
-      </nav>
 
-      <section className="mx-auto max-w-6xl px-6 pb-20 pt-20">
-        <div className="max-w-3xl">
-          <div className="mb-6 inline-flex rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-sm text-slate-300">
-            CLI + Generated Files + MCP
-          </div>
-
-          <h1 className="text-5xl font-semibold tracking-tight text-white md:text-7xl">
-            {product.tagline}
-          </h1>
-
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-400">
-            {product.description}
-          </p>
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="flex items-center gap-3">
+            <Link
+              href="/login"
+              className="hidden text-sm font-medium text-[#756b5f] hover:text-[#17130f] sm:block"
+            >
+              Login
+            </Link>
             <Link
               href="/dashboard"
-              className="rounded-full bg-white px-5 py-3 text-center text-sm font-medium text-black transition hover:bg-slate-200"
+              className="premium-button rounded-full px-4 py-2 text-sm font-medium"
             >
-              Open workspace
+              Start building
+            </Link>
+          </div>
+        </nav>
+
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-4 pb-20 pt-20 text-center sm:px-6 sm:pt-28">
+          <div className="premium-pill mb-6 inline-flex rounded-full border px-3 py-1 text-sm font-medium">
+            CLI + generated files + MCP
+          </div>
+
+          <h1 className="max-w-5xl text-5xl font-semibold tracking-tight text-[#17130f] md:text-7xl">
+            One{" "}
+            <span className="rounded-2xl bg-[#D97757]/18 px-1 text-[#D97757] shadow-[inset_0_-0.18em_0_rgba(217,119,87,0.28)]">
+              workspace
+            </span>
+            . All AI agents. One shared{" "}
+            <span className="rounded-2xl bg-[#D97757]/18 px-1 text-[#D97757] shadow-[inset_0_-0.18em_0_rgba(217,119,87,0.28)]">
+              project brain
+            </span>
+            .
+          </h1>
+
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-[#756b5f] md:text-xl">
+            AgentDock helps developers turn a GitHub repo into a shared project
+            brain for Codex, Claude, Cursor, OpenClaw, Cline, and custom agents
+            through CLI, generated files, and MCP.
+          </p>
+
+          <div className="mt-8 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
+            <Link
+              href="/dashboard"
+              className="premium-button rounded-full px-6 py-3 text-center text-sm font-medium"
+            >
+              Start building
             </Link>
             <Link
               href="/integrations"
-              className="rounded-full border border-white/10 px-5 py-3 text-center text-sm font-medium text-white transition hover:bg-white/[0.05]"
+              className="premium-button-secondary rounded-full border px-6 py-3 text-center text-sm font-medium"
             >
               View integrations
             </Link>
           </div>
+
+          <div className="premium-surface mt-14 w-full max-w-4xl rounded-[2rem] p-4 text-left">
+            <div className="rounded-[1.5rem] border border-[rgba(120,95,70,0.12)] bg-white/70 p-5">
+              <div className="flex flex-col justify-between gap-4 border-b border-[rgba(120,95,70,0.12)] pb-5 sm:flex-row sm:items-center">
+                <div>
+                  <p className="text-sm font-semibold text-[#17130f]">
+                    AgentDock workflow
+                  </p>
+                  <p className="mt-1 text-sm text-[#756b5f]">
+                    Repo context becomes setup files every agent can use.
+                  </p>
+                </div>
+                <span className="premium-pill w-fit rounded-full border px-3 py-1 text-xs font-medium">
+                  Shared context
+                </span>
+              </div>
+
+              <div className="mt-5 grid gap-3 md:grid-cols-5">
+                {workflow.map((step, index) => (
+                  <div
+                    key={step}
+                    className="rounded-2xl border border-[rgba(120,95,70,0.14)] bg-[#fffaf2]/78 p-4 shadow-[0_12px_28px_rgba(92,69,42,0.08)] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(171,119,43,0.3)]"
+                  >
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#17130f] text-xs font-semibold text-[#fffaf2]">
+                      {index + 1}
+                    </div>
+                    <p className="mt-4 text-sm font-semibold text-[#17130f]">
+                      {step}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-5 rounded-2xl border border-[rgba(120,95,70,0.12)] bg-[#f8f3ea]/78 p-4">
+                <div className="flex flex-wrap gap-2">
+                  {["AGENTS.md", "CLAUDE.md", "Cursor rules", "OPENCLAW.md", "CLINE.md"].map(
+                    (file) => (
+                      <span
+                        key={file}
+                        className="rounded-full border border-[rgba(120,95,70,0.14)] bg-white/70 px-3 py-1 text-xs font-medium text-[#756b5f]"
+                      >
+                        {file}
+                      </span>
+                    )
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-6xl gap-5 px-4 py-14 sm:px-6 lg:grid-cols-2">
+        <div className="premium-card rounded-3xl border p-7">
+          <p className="text-sm font-semibold text-[#9a681d]">Problem</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#17130f]">
+            Every AI agent starts without your project context.
+          </h2>
+          <p className="mt-4 leading-7 text-[#756b5f]">
+            Developers repeat setup notes, commands, constraints, decisions,
+            and handoffs every time they move between AI tools.
+          </p>
         </div>
 
-        <div className="mt-16 grid gap-4 md:grid-cols-3">
+        <div className="premium-card rounded-3xl border p-7">
+          <p className="text-sm font-semibold text-[#9a681d]">Solution</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#17130f]">
+            Keep one project brain that every agent can share.
+          </h2>
+          <p className="mt-4 leading-7 text-[#756b5f]">
+            AgentDock brings repo context, memory, skills, sessions, secret
+            references, and agent setup files into one clean workspace.
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <div className="max-w-2xl">
+          <p className="text-sm font-semibold text-[#9a681d]">How it works</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#17130f]">
+            From repository to agent-ready context.
+          </h2>
+        </div>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {howItWorks.map((item) => (
+            <div key={item.title} className="premium-card rounded-3xl border p-6">
+              <h3 className="font-semibold text-[#17130f]">{item.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-[#756b5f]">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <div className="max-w-2xl">
+          <p className="text-sm font-semibold text-[#9a681d]">Access methods</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#17130f]">
+            Use the route each agent already supports.
+          </h2>
+        </div>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
           {accessMethods.map((method) => (
             <div
               key={method.title}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-5"
+              className="premium-card rounded-3xl border p-6"
             >
-              <h3 className="font-medium text-white">{method.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-400">
+              <h3 className="font-semibold text-[#17130f]">{method.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-[#756b5f]">
                 {method.description}
               </p>
             </div>
@@ -73,37 +228,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-white/[0.02]">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-2">
-          <div>
-            <p className="text-sm font-medium text-slate-400">Problem</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight">
-              Every AI agent starts blank.
-            </h2>
-            <p className="mt-4 leading-7 text-slate-400">
-              Developers repeat the same project context, commands, bugs,
-              decisions, and rules every time they switch between AI tools.
-            </p>
-          </div>
-
-          <div>
-            <p className="text-sm font-medium text-slate-400">Solution</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight">
-              Save the project brain once.
-            </h2>
-            <p className="mt-4 leading-7 text-slate-400">
-              AgentDock keeps project details, memory, skills, sessions, and
-              secret references in one workspace that agents can access.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-6 py-20">
+      <section className="mx-auto max-w-6xl px-4 py-14 pb-24 sm:px-6">
         <div className="max-w-2xl">
-          <p className="text-sm font-medium text-slate-400">Supported agents</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight">
-            Connect through the method each agent supports.
+          <p className="text-sm font-semibold text-[#9a681d]">Supported agents</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#17130f]">
+            Connect through generated files, CLI, and shared context.
           </h2>
         </div>
 
@@ -111,10 +240,10 @@ export default function Home() {
           {agents.map((agent) => (
             <div
               key={agent.name}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-5"
+              className="premium-card rounded-3xl border p-6"
             >
-              <h3 className="font-medium">{agent.name}</h3>
-              <p className="mt-2 text-sm text-slate-400">{agent.setup}</p>
+              <h3 className="font-semibold text-[#17130f]">{agent.name}</h3>
+              <p className="mt-2 text-sm text-[#756b5f]">{agent.setup}</p>
             </div>
           ))}
         </div>
