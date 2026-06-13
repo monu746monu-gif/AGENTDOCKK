@@ -34,12 +34,12 @@ const contextHighlights = [
 ];
 
 const agentImages = [
-  "/claude.jpeg",
-  "/codex.jpeg",
-  "/cursor.jpeg",
-  "/openclaw.jpeg",
-  "/cline.jpeg",
-  "/custom-agent.jpeg",
+"/claude.jpeg",
+"/codex.jpeg",
+"/cursor.jpeg",
+"/openclaw.jpeg",
+"/cline.jpeg",
+"/custom-agent.jpeg",
 ];
 
 const processSteps = [
@@ -78,7 +78,7 @@ const footerLinks = [
 { label: "Projects", href: "/projects" },
 { label: "Generated Files", href: "/generated-files" },
 { label: "Integrations", href: "/integrations" },
-{ label: "Dashboard", href: "/dashboard" },
+{ label: "Login", href: "/login" },
 ];
 
 const imageCards = [
@@ -137,8 +137,9 @@ return ( <main className="min-h-screen overflow-hidden text-[#17130f]"> <section
         >
           Login
         </Link>
+
         <Link
-          href="/dashboard"
+          href="/login"
           className="premium-button inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium"
         >
           Start building
@@ -172,12 +173,13 @@ return ( <main className="min-h-screen overflow-hidden text-[#17130f]"> <section
 
       <div className="text-reveal mt-8 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
         <Link
-          href="/dashboard"
+          href="/login"
           className="premium-button inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-center text-sm font-medium"
         >
           Start building
           <span className="button-arrow" aria-hidden="true" />
         </Link>
+
         <a
           href="#workflow"
           className="premium-button-secondary rounded-full border px-6 py-3 text-center text-sm font-medium"
@@ -207,6 +209,7 @@ return ( <main className="min-h-screen overflow-hidden text-[#17130f]"> <section
             <h2 className="mt-5 text-xl font-semibold text-[#17130f]">
               {card.title}
             </h2>
+
             <p className="mt-3 text-sm leading-6 text-[#756b5f]">
               {card.description}
             </p>
@@ -250,7 +253,7 @@ return ( <main className="min-h-screen overflow-hidden text-[#17130f]"> <section
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Link
-            href="/projects"
+            href="/login"
             className="premium-button inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium"
           >
             Import your repo
@@ -258,7 +261,7 @@ return ( <main className="min-h-screen overflow-hidden text-[#17130f]"> <section
           </Link>
 
           <Link
-            href="/generated-files"
+            href="/login"
             className="premium-button-secondary rounded-full border px-6 py-3 text-center text-sm font-medium"
           >
             Generate files
@@ -357,7 +360,7 @@ return ( <main className="min-h-screen overflow-hidden text-[#17130f]"> <section
 
         <div className="mt-7 flex flex-col gap-3 sm:flex-row">
           <Link
-            href="/projects"
+            href="/login"
             className="premium-button inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium"
           >
             Create project brain
@@ -365,7 +368,7 @@ return ( <main className="min-h-screen overflow-hidden text-[#17130f]"> <section
           </Link>
 
           <Link
-            href="/generated-files"
+            href="/login"
             className="premium-button-secondary rounded-full border px-6 py-3 text-center text-sm font-medium"
           >
             Generate files
@@ -475,13 +478,14 @@ return ( <main className="min-h-screen overflow-hidden text-[#17130f]"> <section
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(249,115,22,0.16),transparent_45%)] opacity-0 transition duration-500 group-hover:opacity-100" />
 
             <div className="relative overflow-hidden rounded-[1.5rem] border border-orange-100 bg-[#fff8ed]">
-            <Image
-  src={agentImages[index]}
-  alt={`${agent.name} illustration`}
-  width={900}
-  height={675}
-  className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105"
-/>
+              <Image
+                src={agentImages[index] ?? "/claude.jpeg"}
+                alt={`${agent.name} illustration`}
+                width={900}
+                height={675}
+                className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105"
+              />
+
               <div className="absolute left-4 top-4 rounded-full border border-orange-200/80 bg-white/82 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#c45f27] shadow-sm backdrop-blur">
                 Agent {String(index + 1).padStart(2, "0")}
               </div>
@@ -518,9 +522,11 @@ return ( <main className="min-h-screen overflow-hidden text-[#17130f]"> <section
       <p className="text-reveal text-sm font-semibold text-[#9a681d]">
         Workspace views
       </p>
+
       <h2 className="text-reveal mt-3 text-4xl font-semibold tracking-tight text-[#17130f] md:text-5xl">
         Three ways the project brain stays useful.
       </h2>
+
       <p className="text-reveal mt-5 max-w-2xl leading-7 text-[#756b5f]">
         Your project context should not stay trapped in one chat. AgentDock
         keeps it useful across setup, handoff, and build workflows.
@@ -539,6 +545,7 @@ return ( <main className="min-h-screen overflow-hidden text-[#17130f]"> <section
               className="object-cover"
             />
           </div>
+
           <div className="p-5">
             <h3>{card.title}</h3>
             <p>{card.description}</p>
@@ -554,13 +561,14 @@ return ( <main className="min-h-screen overflow-hidden text-[#17130f]"> <section
         <p className="text-reveal text-sm font-semibold text-[#9a681d]">
           Ready workspace
         </p>
+
         <h2 className="text-reveal mt-3 max-w-2xl text-4xl font-semibold tracking-tight text-[#17130f] md:text-5xl">
           Create a project brain and keep every agent aligned.
         </h2>
       </div>
 
       <Link
-        href="/projects"
+        href="/login"
         className="premium-button inline-flex w-fit items-center gap-2 rounded-full px-6 py-3 text-sm font-medium"
       >
         Go to projects
@@ -580,6 +588,7 @@ return ( <main className="min-h-screen overflow-hidden text-[#17130f]"> <section
             height={36}
             className="h-9 w-9 rounded-xl object-cover"
           />
+
           <span className="font-semibold text-[#17130f]">
             {product.name}
           </span>
