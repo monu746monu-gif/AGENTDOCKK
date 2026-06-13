@@ -33,6 +33,15 @@ const contextHighlights = [
 "Use the same context in your terminal, generated files, and MCP-ready workflows.",
 ];
 
+const agentImages = [
+  "/claude.jpeg",
+  "/codex.jpeg",
+  "/cursor.jpeg",
+  "/openclaw.jpeg",
+  "/cline.jpeg",
+  "/custom-agent.jpeg",
+];
+
 const processSteps = [
 {
 step: "01",
@@ -466,14 +475,13 @@ return ( <main className="min-h-screen overflow-hidden text-[#17130f]"> <section
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(249,115,22,0.16),transparent_45%)] opacity-0 transition duration-500 group-hover:opacity-100" />
 
             <div className="relative overflow-hidden rounded-[1.5rem] border border-orange-100 bg-[#fff8ed]">
-              <Image
-                src={`/${encodeURIComponent(agent.name)}.jpeg`}
-                alt={`${agent.name} illustration`}
-                width={900}
-                height={675}
-                className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105"
-              />
-
+            <Image
+  src={agentImages[index]}
+  alt={`${agent.name} illustration`}
+  width={900}
+  height={675}
+  className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105"
+/>
               <div className="absolute left-4 top-4 rounded-full border border-orange-200/80 bg-white/82 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#c45f27] shadow-sm backdrop-blur">
                 Agent {String(index + 1).padStart(2, "0")}
               </div>
