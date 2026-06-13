@@ -77,7 +77,7 @@ export default function IntegrationsPage() {
         {accessMethods.map((method) => (
           <div
             key={method.title}
-            className="premium-card rounded-2xl border p-5"
+            className="rounded-2xl border border-white/10 bg-white/[0.03] p-5"
           >
             <h3 className="font-medium text-white">{method.title}</h3>
             <p className="mt-3 text-sm leading-6 text-slate-400">
@@ -87,7 +87,7 @@ export default function IntegrationsPage() {
         ))}
       </div>
 
-      <div className="mt-10 premium-card rounded-2xl border p-5">
+      <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
           <div>
             <p className="text-sm font-medium text-slate-400">CLI setup</p>
@@ -133,7 +133,7 @@ export default function IntegrationsPage() {
       </div>
 
       <div className="mt-10 grid gap-6 lg:grid-cols-2">
-        <div className="premium-card rounded-2xl border p-5">
+        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
           <h2 className="text-lg font-semibold text-white">
             Generated file targets
           </h2>
@@ -146,7 +146,7 @@ export default function IntegrationsPage() {
             {generatedTargets.map((target) => (
               <div
                 key={target.command}
-                className="premium-panel rounded-xl border p-4"
+                className="rounded-xl border border-white/10 bg-black/20 p-4"
               >
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
@@ -158,7 +158,7 @@ export default function IntegrationsPage() {
                     </p>
                   </div>
 
-                  <span className="premium-pill rounded-full border px-3 py-1 text-xs">
+                  <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-400">
                     CLI
                   </span>
                 </div>
@@ -171,7 +171,7 @@ export default function IntegrationsPage() {
           </div>
         </div>
 
-        <div className="premium-card rounded-2xl border p-5">
+        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
           <h2 className="text-lg font-semibold text-white">Agent setup map</h2>
           <p className="mt-2 text-sm leading-6 text-slate-400">
             Each agent gets the connection method and file format it works best
@@ -182,14 +182,14 @@ export default function IntegrationsPage() {
             {agents.map((agent) => (
               <div
                 key={agent.name}
-                className="flex items-center justify-between gap-4 premium-panel rounded-xl border p-4"
+                className="flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-black/20 p-4"
               >
                 <div>
                   <h3 className="font-medium text-white">{agent.name}</h3>
                   <p className="mt-1 text-sm text-slate-400">{agent.setup}</p>
                 </div>
 
-                <span className="premium-pill rounded-full border px-3 py-1 text-xs">
+                <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-400">
                   v1
                 </span>
               </div>
@@ -198,7 +198,7 @@ export default function IntegrationsPage() {
         </div>
       </div>
 
-      <div className="mt-10 premium-card rounded-2xl border p-5">
+      <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
           <div>
             <p className="text-sm font-medium text-slate-400">MCP access</p>
@@ -227,7 +227,7 @@ export default function IntegrationsPage() {
           ].map((tool) => (
             <div
               key={tool}
-              className="premium-panel rounded-xl border p-4 font-mono text-sm text-slate-300"
+              className="rounded-xl border border-white/10 bg-black/20 p-4 font-mono text-sm text-slate-300"
             >
               {tool}
             </div>

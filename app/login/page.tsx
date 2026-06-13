@@ -5,6 +5,7 @@ import { login } from "@/app/auth/actions";
 type LoginPageProps = {
   searchParams: Promise<{
     error?: string;
+    next?: string;
   }>;
 };
 
@@ -37,6 +38,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
         ) : null}
 
         <form action={login} className="mt-6 space-y-3">
+          <input type="hidden" name="next" value={params.next || "/dashboard"} />
           <input
             name="email"
             placeholder="Email"
@@ -61,7 +63,14 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
         <p className="mt-5 text-sm text-[#756b5f]">
           No account?{" "}
-          <Link href="/signup" className="font-medium text-[#9a681d]">
+          <Link
+            href={
+              params.next
+                ? `/signup?next=${encodeURIComponent(params.next)}`
+                : "/signup"
+            }
+            className="font-medium text-[#9a681d]"
+          >
             Sign up
           </Link>
         </p>

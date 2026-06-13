@@ -1,12 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type EmptyStateProps = {
     title: string;
     description: string;
     action?: string;
+    actionHref?: string;
   };
   
-export function EmptyState({ title, description, action }: EmptyStateProps) {
+export function EmptyState({ title, description, action, actionHref }: EmptyStateProps) {
   return (
     <div className="premium-card rounded-2xl border border-dashed p-8 text-center">
       <Image
@@ -20,7 +22,15 @@ export function EmptyState({ title, description, action }: EmptyStateProps) {
       <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-[#756b5f]">
         {description}
       </p>
-      {action ? (
+      {action && actionHref ? (
+        <Link
+          href={actionHref}
+          className="premium-button mt-5 inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium"
+        >
+          {action}
+        </Link>
+      ) : null}
+      {action && !actionHref ? (
         <button className="premium-button mt-5 rounded-full px-4 py-2 text-sm font-medium">
           {action}
         </button>

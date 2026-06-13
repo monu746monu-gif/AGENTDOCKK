@@ -51,6 +51,7 @@ export default async function DashboardPage() {
           title="Create your first project brain"
           description="Add project details, run commands, memory, skills, and agent setup so AI tools can use the same context."
           action="Go to projects"
+          actionHref="/projects"
         />
       </div>
     </AppShell>
